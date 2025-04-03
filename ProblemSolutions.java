@@ -80,13 +80,13 @@ public class ProblemSolutions {
         // Keep smashing the two heaviest boulders until only one or none is left.
         while (pq.size() > 1) {
             // Remove the heaviest boulder
-            int y = pq.poll();
+            int heaviestBoulder = pq.poll();
             // Remove the next heavy boulder
-            int x = pq.poll();
+            int nextHeaviest = pq.poll();
 
             // If their weights are not equal, the leftover piece goes back into the heap
-            if (x != y) {
-                pq.add(y - x);
+            if (heaviestBoulder != nextHeaviest) {
+                pq.add(heaviestBoulder - nextHeaviest);
             }
         }
 
