@@ -3,7 +3,7 @@
  *
  *   CEPHER ONANO / COMP 400 C - 002
  * 
- *   Last Modified 4/2/2025
+ *   Last Modified 4/3/2025
  *
  *   Note, additional comments provided throughout this source code
  *   is for educational purposes
@@ -171,9 +171,13 @@ class PriorityQueue<E, P> {
     public Node add(E e, P priority) {
 
         // YOUR CODE GOES HERE
+        // Create a new node with the given value, priority, and current position
         Node newNode = new Node(e, priority, tree.size());
+        // Add the new node to end of the heap.
         tree.add(newNode);
+        // Reoder the heap by moving the new node to correct spot.
         pullUp(newNode.idx);
+        // Return node.
         return newNode;
         // return null;
     }
@@ -191,10 +195,14 @@ class PriorityQueue<E, P> {
     public boolean contains(E e) {
 
         // ADD YOUR CODE HERE
+        // Initialize elementExists as false,
         boolean containsElement = false;
+        // Iterate through the nodes in the heap.
         for (Node node : tree) {
+            // cehck if node is still valid and matches target
             containsElement = containsElement || (node.isValid() && node.value.equals(e));
         }
+        // true if element is found or false otherwise.
         return containsElement;
         // return false;
     }
